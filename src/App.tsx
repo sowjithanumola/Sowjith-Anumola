@@ -30,7 +30,7 @@ export default function App() {
           <img 
             src="https://i.ibb.co/KjHNMvhD/Screenshot-2026-03-23-142946.png"
             alt="Sowjith Anumola" 
-            className="rounded-2xl w-64 h-64 object-cover shadow-lg"
+            className="rounded-2xl w-64 h-64 object-cover shadow-lg flex-shrink-0"
             referrerPolicy="no-referrer"
           />
           <div>

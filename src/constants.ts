@@ -38,5 +38,10 @@ export const PROJECTS = [
     name: "Emo Lens",
     url: "https://emo-lens.vercel.app/",
     description: "AI emotion analysis tool detecting tone in text input."
+  },
+  {
+    name: "Ink Whisper",
+    url: "https://ink-whisper-sigma.vercel.app/",
+    description: "AI-powered assistant that helps you write letters and more."
   }
 ];
