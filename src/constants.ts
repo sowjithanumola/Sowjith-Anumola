@@ -43,5 +43,10 @@ export const PROJECTS = [
     name: "Ink Whisper",
     url: "https://ink-whisper-sigma.vercel.app/",
     description: "AI-powered assistant that helps you write letters and more."
+  },
+  {
+    name: "Te-X Forge",
+    url: "https://te-x-forge-theta.vercel.app/",
+    description: "A clean and simple layout with plenty of white space, clear typography, and focused tools for writing and rendering equations."
   }
 ];
