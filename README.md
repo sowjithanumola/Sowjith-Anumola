@@ -1,49 +1,20 @@
-# 🌐 Sowjith Portfolio
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-Welcome to my personal portfolio website!
-This website showcases my projects, skills, and experiments in development and AI.
+# Run and deploy your AI Studio app
 
-## 👋 About Me
+This contains everything you need to run your app locally.
 
-Hi, I'm **Sowjith Anumola**, a young developer passionate about building websites, AI tools, and creative tech projects. I enjoy experimenting with new ideas and turning them into real applications.
+View your app in AI Studio: https://ai.studio/apps/62f62d6b-4eea-440c-a995-da24c2f4bac4
 
-## 🚀 Live Website
+## Run Locally
 
-Visit my portfolio here:
-👉 https://sowjith.vercel.app/
+**Prerequisites:**  Node.js
 
-## 🧠 What You'll Find Here
 
-* 💻 My development projects
-* 🤖 AI tools I created
-* 🧪 Experiments and new ideas
-* 📄 Information about my skills and learning journey
-
-## 🛠️ Built With
-
-* HTML / CSS / JavaScript
-* Modern Web Development Tools
-* Deployed using **Vercel**
-
-## 📂 Features
-
-* Clean modern UI
-* Responsive design
-* Project showcase
-* Developer profile section
-* Links to my work and experiments
-
-## 🎯 Goals
-
-My goal is to keep learning, build useful tools, and share my work with the world. I love exploring AI, web development, and new technologies.
-
-## 📬 Connect With Me
-
-If you want to collaborate or check out my work:
-
-🌐 Website: https://sowjith.vercel.app/
-💻 GitHub: https://github.com/sowjithanumola
-
----
-
-⭐ If you like my work, feel free to star the repository!
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
