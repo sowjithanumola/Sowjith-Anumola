@@ -6,22 +6,22 @@ export const PROJECTS = [
   },
   {
     name: "Mail Craft",
-    url: "https://mail-craft-ai67.vercel.app/",
+    url: "https://mail-craft-two.vercel.app/",
     description: "AI email writing assistant that generates professional, well-structured emails."
   },
   {
     name: "Focus Mate",
-    url: "https://focus-mate-six.vercel.app/",
+    url: "https://focus-mate-rho.vercel.app/",
     description: "Productivity tool with timers and structured sessions to improve concentration."
   },
   {
     name: "Note Snap",
-    url: "https://note-snap-ten.vercel.app/",
+    url: "https://note-snap-three.vercel.app/",
     description: "Smart note-taking tool for capturing and organizing ideas efficiently."
   },
   {
     name: "Mentor AI",
-    url: "https://mentorai2-ten.vercel.app/",
+    url: "https://mentor-ai-murex.vercel.app/",
     description: "AI guidance assistant for suggestions, learning support, and advice."
   },
   {
@@ -31,7 +31,7 @@ export const PROJECTS = [
   },
   {
     name: "Viral Forge",
-    url: "https://viral-forge-nine.vercel.app/",
+    url: "https://viral-forge-five.vercel.app/",
     description: "Content idea generator for creators to spark social media inspiration."
   },
   {
@@ -41,12 +41,12 @@ export const PROJECTS = [
   },
   {
     name: "Ink Whisper",
-    url: "https://ink-whisper-sigma.vercel.app/",
+    url: "https://ink-whisper.vercel.app/",
     description: "AI-powered assistant that helps you write letters and more."
   },
   {
     name: "Te-X Forge",
-    url: "https://te-x-forge-theta.vercel.app/",
+    url: "https://te-x-forge-two.vercel.app/",
     description: "A clean and simple layout with plenty of white space, clear typography, and focused tools for writing and rendering equations."
   }
 ];
