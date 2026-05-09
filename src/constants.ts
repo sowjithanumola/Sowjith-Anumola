@@ -24,7 +24,6 @@ export const PROJECTS = [
     url: "https://mentor-ai-murex.vercel.app/",
     description: "AI guidance assistant for suggestions, learning support, and advice."
   },
-
   {
     name: "Viral Forge",
     url: "https://viral-forge-five.vercel.app/",
@@ -54,10 +53,9 @@ export const PROJECTS = [
     name: "Career Advisor",
     url: "https://career-advisor-eight.vercel.app/",
     description: "Career Advisor is a streamlined, interactive web application that provides personalized career guidance based on user input."
-  }
-   },
+  },
   {
-    name: "vorathi",
+    name: "Vorathi",
     url: "https://vorathi.vercel.app/",
     description: "Vorathi is a new language created by Sowjith Anumola. It is designed with creativity and originality, representing a unique way of communication."
   }
