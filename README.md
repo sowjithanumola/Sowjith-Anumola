@@ -1,6 +1,6 @@
 Sowjith Anumola
 About Me
-I am a web developer with a passion for building platforms that foster connection and professional growth. My work sits at the intersection of clean UI/UX design and robust backend architecture. I specialize in taking an idea—like a community chat or a career-planning tool—and transforming it into a functional, live application.
+I am a web developer with a passion for building platforms that foster connection and professional growth. My work sits and ask ai to built like a prompt except or else vibe coder. I specialize in taking an idea—like a community chat or a career-planning tool—and transforming it into a functional, live application.
 
 My Approach
 I believe that the best web experiences are built on three pillars:
