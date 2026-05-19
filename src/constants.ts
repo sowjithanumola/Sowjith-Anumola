@@ -58,5 +58,10 @@ export const PROJECTS = [
     name: "Vorathi",
     url: "https://vorathi.vercel.app/",
     description: "Vorathi is a new language created by Sowjith Anumola. It is designed with creativity and originality, representing a unique way of communication."
+  },
+  {
+    name: "Giddu",
+    url: "https://giddu-phi.vercel.app/",
+    description: "Giddu is an AI-powered platform designed to simplify tasks, improve productivity, and provide smart digital assistance."
   }
 ];
