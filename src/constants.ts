@@ -63,5 +63,10 @@ export const PROJECTS = [
     name: "Giddu",
     url: "https://giddu-phi.vercel.app/",
     description: "Giddu is an AI-powered platform designed to simplify tasks, improve productivity, and provide smart digital assistance."
+  },
+  {
+    name: "Nova Mind",
+    url: "https://nova-mind-azure.vercel.app/",
+    description: "Nova Mind is a futuristic AI assistant built for instant, intelligent conversations and creative productivity."
   }
 ];
