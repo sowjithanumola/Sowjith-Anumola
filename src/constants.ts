@@ -68,5 +68,10 @@ export const PROJECTS = [
     name: "Nova Mind",
     url: "https://nova-mind-azure.vercel.app/",
     description: "Nova Mind is a futuristic AI assistant built for instant, intelligent conversations and creative productivity."
+  },
+  {
+    name: "Score Arena",
+    url: "https://scorearena-mu.vercel.app/",
+    description: "Score Arena is a live sports platform that provides real-time scores, match updates, team statistics, standings, and sports insights across multiple competitions."
   }
 ];
