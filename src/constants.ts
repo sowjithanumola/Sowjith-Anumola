@@ -73,5 +73,10 @@ export const PROJECTS = [
     name: "Score Arena",
     url: "https://scorearena-mu.vercel.app/",
     description: "Score Arena is a live sports platform that provides real-time scores, match updates, team statistics, standings, and sports insights across multiple competitions."
+  },
+  {
+    name: "Multiplayer Racing",
+    url: "https://multiplayer-racing.vercel.app/",
+    description: "Multiplayer Racing is an online racing game where players compete in real-time, challenge friends, and test their driving skills across exciting tracks."
   }
 ];
