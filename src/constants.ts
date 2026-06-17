@@ -78,5 +78,10 @@ export const PROJECTS = [
     name: "Multiplayer Racing",
     url: "https://multiplayer-racing.vercel.app/",
     description: "Multiplayer Racing is an online racing game where players compete in real-time, challenge friends, and test their driving skills across exciting tracks."
+  },
+  {
+    name: "TicMaster",
+    url: "https://tictactoe-sandy-two-22.vercel.app/",
+    description: "TicMaster is a classic Tic Tac Toe game featuring both two-player and AI modes. Challenge friends or play against an unbeatable bot powered by the Minimax algorithm."
   }
 ];
