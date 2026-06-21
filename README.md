@@ -1,12 +1,20 @@
-Sowjith Anumola
-About Me
-I am a web developer with a passion for building platforms that foster connection and professional growth. My work sits and ask ai to built like a prompt except or else vibe coder. I specialize in taking an idea—like a community chat or a career-planning tool—and transforming it into a functional, live application.
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+</div>
 
-My Approach
-I believe that the best web experiences are built on three pillars:
+# Run and deploy your AI Studio app
 
-User-Centricity: Every feature I build starts with how the user will experience it.
+This contains everything you need to run your app locally.
 
-Reliability: I focus on solid database architecture (PostgreSQL/Supabase) to ensure that the apps I build are stable and secure.
+View your app in AI Studio: https://ai.studio/apps/62f62d6b-4eea-440c-a995-da24c2f4bac4
 
-Problem Solving: Development is rarely a straight line. I enjoy the challenge of debugging complex constraints and iterating until the system performs exactly as intended.
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
