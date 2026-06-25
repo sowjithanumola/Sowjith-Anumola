@@ -26,7 +26,7 @@ export const PROJECTS = [
   },
   {
     name: "Viral Forge",
-    url: "https://viral-forge-nine.vercel.app/",
+    url: "https://viral-forge-five.vercel.app/",
     description: "Content idea generator for creators to spark social media inspiration."
   },
   {
@@ -41,7 +41,7 @@ export const PROJECTS = [
   },
   {
     name: "Te-X Forge",
-    url: "https://te-x-forge-theta.vercel.app/",
+    url: "https://te-x-forge-two.vercel.app/",
     description: "A clean and simple layout with plenty of white space, clear typography, and focused tools for writing and rendering equations."
   },
   {
