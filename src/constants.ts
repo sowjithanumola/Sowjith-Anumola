@@ -6,7 +6,7 @@ export const PROJECTS = [
   },
   {
     name: "Mail Craft",
-    url: "https://mail-craft-ai67.vercel.app/",
+    url: "https://mail-craft-two.vercel.app/",
     description: "AI email writing assistant that generates professional, well-structured emails."
   },
   {
