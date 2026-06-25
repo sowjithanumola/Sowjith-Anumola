@@ -11,7 +11,7 @@ export const PROJECTS = [
   },
   {
     name: "Focus Mate",
-    url: "https://focus-mate-six.vercel.app/",
+    url: "https://focus-mate-rho.vercel.app/",
     description: "Productivity tool with timers and structured sessions to improve concentration."
   },
   {
