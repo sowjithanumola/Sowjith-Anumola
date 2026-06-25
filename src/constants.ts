@@ -16,7 +16,7 @@ export const PROJECTS = [
   },
   {
     name: "Note Snap",
-    url: "https://note-snap-ten.vercel.app/",
+    url: "https://note-snap-three.vercel.app/",
     description: "Smart note-taking tool for capturing and organizing ideas efficiently."
   },
   {
