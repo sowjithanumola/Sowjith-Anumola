@@ -21,13 +21,8 @@ export const PROJECTS = [
   },
   {
     name: "Mentor AI",
-    url: "https://mentorai2-ten.vercel.app/",
+    url: "https://mentor-ai-murex.vercel.app/",
     description: "AI guidance assistant for suggestions, learning support, and advice."
-  },
-  {
-    name: "Link Sense AI",
-    url: "https://link-sense-ai.vercel.app/",
-    description: "Smart link analysis tool providing summaries and insights from web content."
   },
   {
     name: "Viral Forge",
