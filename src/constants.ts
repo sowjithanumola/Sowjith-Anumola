@@ -88,5 +88,10 @@ export const PROJECTS = [
     name: "TicMaster",
     url: "https://tictactoe-sandy-two-22.vercel.app/",
     description: "Classic Tic Tac Toe featuring multiplayer and AI modes powered by the Minimax algorithm."
+  },
+  {
+    name: "Chess Game",
+    url: "https://chess-game-tau-brown.vercel.app/",
+    description: "Classic offline chess game designed for two players to compete on the same device with smooth gameplay, standard chess rules, and a simple user-friendly interface."
   }
 ];
