@@ -12,7 +12,7 @@ import AudioPlayer from "./components/AudioPlayer";
 export default function App() {
   return (
     <div className="min-h-screen bg-white text-zinc-900 font-sans">
-      <AudioPlayer src="https://www.image2url.com/r2/default/audio/1782036915888-a570bcd0-1167-4aa4-90bb-7af3b0de997c.mp3" />
+      <AudioPlayer src="https://fair-black-hwo6ylmg.edgeone.dev/Sowjith%20Anthem.mp3" />
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-zinc-100">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <span className="font-bold text-lg">Sowjith Anumola</span>
