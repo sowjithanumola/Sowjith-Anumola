@@ -93,5 +93,20 @@ export const PROJECTS = [
     name: "Chess Game",
     url: "https://chess-game-tau-brown.vercel.app/",
     description: "Classic offline chess game designed for two players to compete on the same device with smooth gameplay, standard chess rules, and a simple user-friendly interface."
+  },
+  {
+    name: "Luminance",
+    url: "https://luminance-navy.vercel.app/",
+    description: "Interactive web application delivering clean, modern visual experiences and lighting effects."
+  },
+  {
+    name: "XRay Vision",
+    url: "https://xray2-five.vercel.app/",
+    description: "An interactive web tool providing visual filter overlays and scanning effects."
+  },
+  {
+    name: "XRay Hand",
+    url: "https://xrayhand-rel4jry7.manus.space/",
+    description: "Interactive hand-tracking visual application with futuristic scan effects."
   }
 ];
