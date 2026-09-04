@@ -17,7 +17,7 @@ export default function AudioPlayer({ src }: { src: string }) {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 bg-white border border-zinc-200 p-3 rounded-full shadow-lg z-50">
+    <div className="fixed bottom-6 right-6 bg-white/60 backdrop-blur-md border border-white/40 p-3 rounded-full shadow-lg z-50 transition-colors duration-500">
       <audio ref={audioRef} src={src} loop />
       <button 
         onClick={togglePlay}
