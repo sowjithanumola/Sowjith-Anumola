@@ -73,7 +73,7 @@ export default function App() {
             <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-zinc-900 font-bold text-xs">S</div>
             <span className="font-bold text-xl tracking-tighter">SOWJITH</span>
           </div>
-          <div className="hidden md:flex gap-8 text-sm font-semibold text-zinc-400 uppercase tracking-widest">
+          <div className="flex gap-4 md:gap-8 text-[10px] md:text-sm font-semibold text-zinc-400 uppercase tracking-widest">
             <a href="#projects" className="hover:text-white transition-colors">Projects</a>
             <a href="#about" className="hover:text-white transition-colors">About Us</a>
             <a href="#info" className="hover:text-white transition-colors">Contact</a>

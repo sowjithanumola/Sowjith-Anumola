@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply antialiased transition-colors duration-500 overflow-x-hidden;
+  }
+  section {
+    scroll-margin-top: 100px;
   }
 }
 
