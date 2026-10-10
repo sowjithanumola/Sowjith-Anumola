@@ -65,4 +65,48 @@ export const PROJECTS = [
     description: "A unique language created by Sowjith Anumola, designed as an original and creative communication system."
   },
   {
-  
+    name: "Giddu",
+    url: "https://giddu-phi.vercel.app/",
+    description: "AI-powered digital assistant that simplifies tasks, boosts productivity, and offers intelligent support."
+  },
+  {
+    name: "Nova Mind",
+    url: "https://nova-mind-azure.vercel.app/",
+    description: "A futuristic AI assistant built for intelligent conversations, creativity, and productivity."
+  },
+  {
+    name: "Score Arena",
+    url: "https://scorearena-mu.vercel.app/",
+    description: "Live sports platform providing real-time scores, standings, match statistics, and sports insights."
+  },
+  {
+    name: "Multiplayer Racing",
+    url: "https://multiplayer-racing.vercel.app/",
+    description: "Real-time multiplayer racing game where players compete on exciting tracks with friends."
+  },
+  {
+    name: "TicMaster",
+    url: "https://tictactoe-sandy-two-22.vercel.app/",
+    description: "Classic Tic Tac Toe featuring multiplayer and AI modes powered by the Minimax algorithm."
+  },
+  {
+    name: "Chess Game",
+    url: "https://chess-game-tau-brown.vercel.app/",
+    description: "Classic offline chess game designed for two players to compete on the same device with smooth gameplay, standard chess rules, and a simple user-friendly interface."
+  },
+  {
+    name: "Luminance",
+    url: "https://luminance-navy.vercel.app/",
+    description: "Interactive web application delivering clean, modern visual experiences and lighting effects."
+  },
+  {
+    name: "XRay Vision",
+    url: "https://xray2-five.vercel.app/",
+    description: "An interactive web tool providing visual filter overlays and scanning effects."
+  },
+  {
+    name: "XRay Hand",
+    url: "https://xrayhand-rel4jry7.manus.space/",
+    description: "Interactive hand-tracking visual application with futuristic scan effects."
+  }
+];
