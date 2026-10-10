@@ -108,5 +108,15 @@ export const PROJECTS = [
     name: "XRay Hand",
     url: "https://xrayhand-rel4jry7.manus.space/",
     description: "Interactive hand-tracking visual application with futuristic scan effects."
+  },
+  {
+    name: "OpenCut Studio",
+    url: "https://opencut-video-editor-three.vercel.app/",
+    description: "Free, browser-based video editor designed for professional video editing with a multi-layer timeline, media tools, text overlays, and watermark-free exports."
+  },
+  {
+    name: "ProPhoto Studio",
+    url: "https://pro-photo-studio-sepia.vercel.app/",
+    description: "AI-powered photo editor for image enhancement, background removal, portrait retouching, color correction, creative effects, and professional-quality photo editing."
   }
 ];
