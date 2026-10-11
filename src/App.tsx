@@ -157,9 +157,9 @@ export default function App() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ delay: Math.min(idx * 0.1, 0.5) }}
               >
-                <ProjectCard 
+                <ProjectCard
                   name={project.name} 
                   url={project.url} 
                   description={project.description} 
@@ -229,9 +229,13 @@ export default function App() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: 0.5 }}
-              onClick={() => {
-                navigator.clipboard.writeText('i.am.sowjith');
-                alert('Discord username "i.am.sowjith" copied to clipboard!');
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText('i.am.sowjith');
+                  alert('Discord username "i.am.sowjith" copied to clipboard!');
+                } catch {
+                  alert('Could not copy automatically. My Discord username is: i.am.sowjith');
+                }
               }}
               className="group bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-3xl flex items-center gap-4 hover:bg-white hover:text-zinc-900 transition-all shadow-lg text-left"
             >
