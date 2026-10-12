@@ -118,5 +118,10 @@ export const PROJECTS = [
     name: "ProPhoto Studio",
     url: "https://pro-photo-studio-sepia.vercel.app/",
     description: "AI-powered photo editor for image enhancement, background removal, portrait retouching, color correction, creative effects, and professional-quality photo editing."
+  },
+  {
+    name: "ECHOROOM Music Studio",
+    url: "https://echoroom-nu.vercel.app/",
+    description: "A browser-based music studio for creating, recording, and editing music."
   }
 ];
