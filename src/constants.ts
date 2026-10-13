@@ -123,5 +123,15 @@ export const PROJECTS = [
     name: "ECHOROOM Music Studio",
     url: "https://echoroom-nu.vercel.app/",
     description: "A browser-based music studio for creating, recording, and editing music."
+  },
+  {
+    name: "Fonts Emoji Studio",
+    url: "https://fonts-emoji-studio.vercel.app/",
+    description: "Creative text styling and emoji tool for customizing fonts and making expressive text."
+  },
+  {
+    name: "QR Code Color Generator",
+    url: "https://qr-code-color-generator.vercel.app/",
+    description: "Custom QR code generator for creating colorful QR codes with personalized designs."
   }
 ];
