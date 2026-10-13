@@ -75,7 +75,7 @@ export default function App() {
           </div>
           <div className="flex gap-4 md:gap-8 text-[10px] md:text-sm font-semibold text-zinc-400 uppercase tracking-widest">
             <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-            <a href="#about" className="hover:text-white transition-colors">About Us</a>
+            <a href="#about" className="hover:text-white transition-colors">About Me</a>
             <a href="#info" className="hover:text-white transition-colors">Contact</a>
           </div>
         </div>
