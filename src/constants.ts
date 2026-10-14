@@ -133,5 +133,10 @@ export const PROJECTS = [
     name: "QR Code Color Generator",
     url: "https://qr-code-color-generator.vercel.app/",
     description: "Custom QR code generator for creating colorful QR codes with personalized designs."
+  },
+  {
+    name: "WebOS",
+    url: "https://webos-green.vercel.app/",
+    description: "A browser-based operating system featuring a desktop interface, file management, coding tools, document editing, and productivity features."
   }
 ];
