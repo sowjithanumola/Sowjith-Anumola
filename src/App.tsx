@@ -26,9 +26,11 @@ import {
   ChevronRight,
   Calendar,
   Cake,
-  UserCheck,
-  Twitter
+  Twitter,
+  ChevronDown,
+  UserCheck
 } from "lucide-react";
+const avatarImg = "/sowjith-avatar.jpg";
 import { PROJECTS, CATEGORIES, Category, SKILLS_DATA, Project } from "./constants";
 import ProjectCard from "./components/ProjectCard";
 import AudioPlayer from "./components/AudioPlayer";
@@ -43,6 +45,17 @@ export default function App() {
   // Navbar brand name reveal on scroll
   const { scrollY } = useScroll();
   const headerNameOpacity = useTransform(scrollY, [140, 260], [0, 1]);
+
+  // Big animated photo scroll transforms:
+  // Initial state: photo is big and prominent ("make the inamge to bigh")
+  // Scroll down: photo smoothly scales down and fades away ("image goies")
+  const bigImageOpacity = useTransform(scrollY, [0, 140, 240], [1, 0.35, 0]);
+  const bigImageScale = useTransform(scrollY, [0, 240], [1, 0.72]);
+  const bigImageY = useTransform(scrollY, [0, 240], [0, -35]);
+
+  // Name and identity reveal as user scrolls down ("my name comes")
+  const nameOpacity = useTransform(scrollY, [0, 80, 200], [0.35, 0.75, 1]);
+  const nameY = useTransform(scrollY, [0, 200], [25, 0]);
 
 
   // Filtered projects
@@ -249,56 +262,118 @@ export default function App() {
         {/* HERO SECTION */}
         <section
           id="hero"
-          className="mb-24 sm:mb-32 pt-4 sm:pt-10 flex flex-col items-center text-center relative"
+          className="mb-24 sm:mb-32 pt-2 sm:pt-6 flex flex-col items-center text-center relative"
         >
-          {/* Identity Kicker Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/40 bg-purple-950/40 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.2)] text-xs font-mono">
-            <span className="w-2 h-2 rounded-full bg-lime-400 animate-ping" aria-hidden="true" />
-            <span className="text-zinc-300">Identity:</span>
-            <span className="text-lime-300 font-bold">"Sowjith, solo coder."</span>
-            <span className="text-zinc-500 hidden sm:inline" aria-hidden="true">·</span>
-            <span className="text-zinc-400 hidden sm:inline">Age 13 · India</span>
-          </div>
-
-          {/* Main Oversized Typography Heading: SOWJITH ANUMOLA */}
-          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.92] text-white mb-6">
-            SOWJITH <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-lime-300 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              ANUMOLA
-            </span>
-          </h1>
-
-          {/* Concise Headline */}
-          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-3xl font-medium leading-relaxed mb-8">
-            A young developer building AI tools, smart web applications, productivity software, and creative digital products that simplify your digital life.
-          </p>
-
-          {/* Hero CTAs */}
-          <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 bg-lime-400 hover:bg-lime-300 text-black px-8 py-4 rounded-2xl text-xs sm:text-sm font-mono font-bold tracking-wider uppercase transition-all shadow-[0_0_30px_rgba(163,230,53,0.35)] hover:shadow-[0_0_40px_rgba(163,230,53,0.55)] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          {/* Big Animated Photo Stage */}
+          {/* "make the inamge to bigh and when the user scrool down the image goies and my name comes" */}
+          {/* "add the animated photo but dont keep anything" */}
+          <motion.div
+            style={{
+              opacity: bigImageOpacity,
+              scale: bigImageScale,
+              y: bigImageY,
+            }}
+            className="flex flex-col items-center justify-center mb-10 relative z-20"
+          >
+            <div
+              className="relative group cursor-pointer"
+              onClick={() => window.scrollTo({ top: 340, behavior: "smooth" })}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  window.scrollTo({ top: 340, behavior: "smooth" });
+                }
+              }}
+              aria-label="Scroll to portfolio details"
             >
-              <span>Explore Projects ({PROJECTS.length})</span>
-              <ChevronRight size={16} aria-hidden="true" />
-            </a>
-            <a
-              href="#about"
-              className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white border border-white/15 px-8 py-4 rounded-2xl text-xs sm:text-sm font-mono font-semibold tracking-wider uppercase transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400"
+              {/* Subtle ambient lighting halo */}
+              <div
+                className="absolute -inset-4 sm:-inset-6 rounded-[2.8rem] bg-gradient-to-tr from-orange-600/35 via-amber-500/25 to-purple-600/30 blur-2xl opacity-75 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                aria-hidden="true"
+              />
+
+              {/* The clean animated photo container - SRH Sunrisers Hyderabad Jacket */}
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-[2.2rem] overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.6)] bg-zinc-900/80 transition-transform duration-300 group-hover:scale-[1.02]">
+                <img
+                  src={avatarImg}
+                  alt="Sowjith Anumola - 3D Avatar in SRH Sunrisers Hyderabad Jacket"
+                  className="w-full h-full object-cover object-center select-none"
+                  loading="eager"
+                  draggable={false}
+                />
+              </div>
+            </div>
+
+            {/* Subtle scroll-to-explore indicator */}
+            <button
+              onClick={() => window.scrollTo({ top: 340, behavior: "smooth" })}
+              className="mt-5 flex flex-col items-center gap-1 text-zinc-400 hover:text-white transition-colors cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400 rounded-full py-1.5 px-3"
+              aria-label="Scroll down to reveal profile"
             >
-              <span>About Me</span>
-            </a>
-            <a
-              href="https://github.com/sowjithanumola"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/15 px-5 py-4 rounded-2xl text-xs font-mono transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400"
-              aria-label="GitHub Profile"
-            >
-              <Github size={18} aria-hidden="true" />
-              <span>@sowjithanumola</span>
-            </a>
-          </div>
+              <span className="text-[11px] font-mono tracking-widest uppercase text-zinc-400 group-hover:text-lime-300 transition-colors">
+                Scroll to explore ↓
+              </span>
+              <ChevronDown size={14} className="text-lime-400 animate-bounce" />
+            </button>
+          </motion.div>
+
+          {/* Name & Identity Section - reveals smoothly as user scrolls ("my name comes") */}
+          <motion.div
+            style={{
+              opacity: nameOpacity,
+              y: nameY,
+            }}
+            className="flex flex-col items-center text-center w-full"
+          >
+            {/* Identity Kicker Badge */}
+            <div className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/40 bg-purple-950/40 backdrop-blur-md shadow-[0_0_20px_rgba(168,85,247,0.2)] text-xs font-mono">
+              <span className="w-2 h-2 rounded-full bg-lime-400 animate-ping" aria-hidden="true" />
+              <span className="text-zinc-300">Identity:</span>
+              <span className="text-lime-300 font-bold">"Sowjith, solo coder."</span>
+              <span className="text-zinc-500 hidden sm:inline" aria-hidden="true">·</span>
+              <span className="text-zinc-400 hidden sm:inline">Age 13 · India</span>
+            </div>
+
+            {/* Main Oversized Typography Heading: SOWJITH ANUMOLA */}
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.92] text-white mb-6">
+              SOWJITH <br className="hidden sm:inline" />
+              <span className="bg-gradient-to-r from-lime-300 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
+                ANUMOLA
+              </span>
+            </h1>
+
+            {/* Concise Headline */}
+            <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-3xl font-medium leading-relaxed mb-8">
+              A young developer building AI tools, smart web applications, productivity software, and creative digital products that simplify your digital life.
+            </p>
+
+            {/* Hero CTAs */}
+            <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
+              <a
+                href="#projects"
+                className="inline-flex items-center gap-2 bg-lime-400 hover:bg-lime-300 text-black px-8 py-4 rounded-2xl text-xs sm:text-sm font-mono font-bold tracking-wider uppercase transition-all shadow-[0_0_30px_rgba(163,230,53,0.35)] hover:shadow-[0_0_40px_rgba(163,230,53,0.55)] hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <span>Explore Projects ({PROJECTS.length})</span>
+                <ChevronRight size={16} aria-hidden="true" />
+              </a>
+              <a
+                href="#about"
+                className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-white border border-white/15 px-8 py-4 rounded-2xl text-xs sm:text-sm font-mono font-semibold tracking-wider uppercase transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400"
+              >
+                <span>About Me</span>
+              </a>
+              <a
+                href="https://github.com/sowjithanumola"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/15 px-5 py-4 rounded-2xl text-xs font-mono transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400"
+                aria-label="GitHub Profile"
+              >
+                <Github size={18} aria-hidden="true" />
+                <span>@sowjithanumola</span>
+              </a>
+            </div>
 
             {/* Developer Terminal Card Column */}
             <div className="w-full max-w-3xl mx-auto rounded-3xl border border-white/15 bg-[#0e0720]/90 backdrop-blur-xl p-5 sm:p-7 text-left shadow-2xl relative overflow-hidden">
@@ -368,6 +443,7 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </motion.div>
         </section>
 
         {/* FEATURED FLAGSHIP SPOTLIGHT (WebOS, ECHOROOM, OpenCut, Focus Mate) */}
