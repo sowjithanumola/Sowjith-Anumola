@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Play, Pause } from 'lucide-react';
+import { Play, Pause, Music } from 'lucide-react';
 
 export default function AudioPlayer({ src }: { src: string }) {
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -17,14 +17,13 @@ export default function AudioPlayer({ src }: { src: string }) {
     try {
       await audio.play();
     } catch (error) {
-      // Playback can be blocked or the file can fail to load; keep the UI in sync.
       console.warn('Audio could not be played:', error);
       setIsPlaying(false);
     }
   };
 
   return (
-    <div className="fixed bottom-6 right-6 bg-white/60 backdrop-blur-md border border-white/40 p-3 rounded-full shadow-lg z-50 transition-colors duration-500">
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#0e071e]/90 backdrop-blur-xl border border-white/15 px-3.5 py-2.5 rounded-full shadow-2xl hover:border-lime-400/50 transition-all duration-300 group">
       <audio
         ref={audioRef}
         src={src}
@@ -36,11 +35,18 @@ export default function AudioPlayer({ src }: { src: string }) {
       />
       <button
         onClick={togglePlay}
-        aria-label={isPlaying ? 'Pause music' : 'Play music'}
-        className="text-zinc-900 hover:text-emerald-600 transition-colors"
+        aria-label={isPlaying ? 'Pause Sowjith Anthem' : 'Play Sowjith Anthem'}
+        className="flex items-center gap-2 text-xs font-mono font-medium text-zinc-300 hover:text-lime-300 focus-visible:ring-2 focus-visible:ring-lime-400 focus-visible:outline-none rounded-full transition-colors"
       >
-        {isPlaying ? <Pause size={20} /> : <Play size={20} />}
+        <span className={`p-1.5 rounded-full transition-colors ${isPlaying ? 'bg-lime-400 text-black shadow-[0_0_12px_rgba(163,230,53,0.5)]' : 'bg-white/10 text-white group-hover:bg-lime-400 group-hover:text-black'}`}>
+          {isPlaying ? <Pause size={14} /> : <Play size={14} />}
+        </span>
+        <span className="hidden sm:inline-flex items-center gap-1.5 pr-1">
+          <Music size={12} className={isPlaying ? 'text-lime-400 animate-pulse' : 'text-zinc-500'} />
+          <span className="tracking-wider uppercase text-[11px]">{isPlaying ? 'Playing Anthem' : 'Sowjith Anthem'}</span>
+        </span>
       </button>
     </div>
   );
 }
+

@@ -1,142 +1,303 @@
-export const PROJECTS = [
+export type ComplexityLevel = "Advanced" | "Intermediate" | "Experimental";
+
+export interface Project {
+  name: string;
+  url: string;
+  description: string;
+  category:
+    | "AI & Agents"
+    | "Developer Tools"
+    | "Productivity & Writing"
+    | "Creative & Media Tools"
+    | "Social & Content Tools"
+    | "Other Projects";
+  tags: string[];
+  featured?: boolean;
+  complexity?: ComplexityLevel;
+  lastUpdated?: string;
+}
+
+export const CATEGORIES = [
+  "All Projects",
+  "AI & Agents",
+  "Developer Tools",
+  "Productivity & Writing",
+  "Creative & Media Tools",
+  "Social & Content Tools",
+  "Other Projects"
+] as const;
+
+export type Category = (typeof CATEGORIES)[number];
+
+export const PROJECTS: Project[] = [
   {
-    name: "EmoLens",
-    url: "https://emo-lens.vercel.app/",
-    description: "AI-powered emotion analysis tool that helps users understand emotions from text and provides meaningful insights."
-  },
-  {
-    name: "Viral Forge",
-    url: "https://viral-forge-five.vercel.app/",
-    description: "Content idea generator for creators to spark social media inspiration."
-  },
-  {
-    name: "Mail Craft",
-    url: "https://mail-craft-two.vercel.app/",
-    description: "AI email writing assistant that generates professional, well-structured emails."
-  },
-  {
-    name: "Note Snap",
-    url: "https://note-snap-three.vercel.app/",
-    description: "Smart note-taking tool for capturing and organizing ideas efficiently."
-  },
-  {
-    name: "Te-X Forge",
-    url: "https://te-x-forge-two.vercel.app/",
-    description: "A clean and simple layout with plenty of white space, clear typography, and focused tools for writing and rendering equations."
-  },
-  {
-    name: "Link Sense AI",
-    url: "https://link-sense-ai.vercel.app/",
-    description: "Smart link analysis tool providing summaries and insights from web content."
-  },
-  {
-    name: "Mentor AI",
-    url: "https://mentor-ai-murex.vercel.app/",
-    description: "AI guidance assistant for suggestions, learning support, and advice."
-  },
-  {
-    name: "Ink Whisper",
-    url: "https://ink-whisper.vercel.app/",
-    description: "AI-powered writing assistant that helps create letters, stories, blogs, and professional content."
-  },
-  {
-    name: "Neuro Draw",
-    url: "https://neuro-draw.vercel.app/",
-    description: "An AI-powered drawing tool for creating digital sketches and creative artwork."
-  },
-  {
-    name: "Focus Mate",
-    url: "https://focus-mate-rho.vercel.app/",
-    description: "Productivity tool with timers, task management, study planning, and structured focus sessions."
-  },
-  {
-    name: "ZoZo",
-    url: "https://zozo-two-theta.vercel.app/",
-    description: "An AI-powered assistant designed to simplify everyday tasks and improve productivity."
-  },
-  {
-    name: "Career Advisor",
-    url: "https://career-advisor-eight.vercel.app/",
-    description: "Interactive AI platform that provides personalized career guidance based on user goals and interests."
-  },
-  {
-    name: "Vorathi",
-    url: "https://vorathi.vercel.app/",
-    description: "A unique language created by Sowjith Anumola, designed as an original and creative communication system."
-  },
-  {
-    name: "Giddu",
-    url: "https://giddu-phi.vercel.app/",
-    description: "AI-powered digital assistant that simplifies tasks, boosts productivity, and offers intelligent support."
-  },
-  {
-    name: "Nova Mind",
-    url: "https://nova-mind-azure.vercel.app/",
-    description: "A futuristic AI assistant built for intelligent conversations, creativity, and productivity."
-  },
-  {
-    name: "Score Arena",
-    url: "https://scorearena-mu.vercel.app/",
-    description: "Live sports platform providing real-time scores, standings, match statistics, and sports insights."
-  },
-  {
-    name: "Multiplayer Racing",
-    url: "https://multiplayer-racing.vercel.app/",
-    description: "Real-time multiplayer racing game where players compete on exciting tracks with friends."
-  },
-  {
-    name: "TicMaster",
-    url: "https://tictactoe-sandy-two-22.vercel.app/",
-    description: "Classic Tic Tac Toe featuring multiplayer and AI modes powered by the Minimax algorithm."
-  },
-  {
-    name: "Chess Game",
-    url: "https://chess-game-tau-brown.vercel.app/",
-    description: "Classic offline chess game designed for two players to compete on the same device with smooth gameplay, standard chess rules, and a simple user-friendly interface."
-  },
-  {
-    name: "Luminance",
-    url: "https://luminance-navy.vercel.app/",
-    description: "Interactive web application delivering clean, modern visual experiences and lighting effects."
-  },
-  {
-    name: "XRay Vision",
-    url: "https://xray2-five.vercel.app/",
-    description: "An interactive web tool providing visual filter overlays and scanning effects."
-  },
-  {
-    name: "XRay Hand",
-    url: "https://xrayhand-rel4jry7.manus.space/",
-    description: "Interactive hand-tracking visual application with futuristic scan effects."
-  },
-  {
-    name: "OpenCut Studio",
-    url: "https://opencut-video-editor-three.vercel.app/",
-    description: "Free, browser-based video editor designed for professional video editing with a multi-layer timeline, media tools, text overlays, and watermark-free exports."
-  },
-  {
-    name: "ProPhoto Studio",
-    url: "https://pro-photo-studio-sepia.vercel.app/",
-    description: "AI-powered photo editor for image enhancement, background removal, portrait retouching, color correction, creative effects, and professional-quality photo editing."
+    name: "WebOS",
+    url: "https://webos-green.vercel.app/",
+    description: "A browser-based operating system featuring a desktop interface, window management, file exploration, code editing, and productivity apps.",
+    category: "Developer Tools",
+    tags: ["React", "TypeScript", "Virtual OS", "Window Manager"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Oct 2026"
   },
   {
     name: "ECHOROOM Music Studio",
     url: "https://echoroom-nu.vercel.app/",
-    description: "A browser-based music studio for creating, recording, and editing music."
+    description: "A full-featured browser-based digital audio workstation for creating, composing, recording, and editing tracks directly on the web.",
+    category: "Creative & Media Tools",
+    tags: ["Web Audio API", "Synthesizer", "DAW", "Audio Processing"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Oct 2026"
+  },
+  {
+    name: "OpenCut Studio",
+    url: "https://opencut-video-editor-three.vercel.app/",
+    description: "Free, browser-based video editor built for creators featuring multi-layer timeline editing, media tools, text overlays, and watermark-free exports.",
+    category: "Creative & Media Tools",
+    tags: ["Video Canvas", "Timeline Engine", "Media Stream", "Export API"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Oct 2026"
+  },
+  {
+    name: "Focus Mate",
+    url: "https://focus-mate-rho.vercel.app/",
+    description: "Productivity companion equipped with Pomodoro timers, task organization, study routine planners, and structured focus sessions.",
+    category: "Productivity & Writing",
+    tags: ["Pomodoro", "Task Management", "Productivity"],
+    featured: true,
+    complexity: "Intermediate",
+    lastUpdated: "Oct 2026"
+  },
+  {
+    name: "ProPhoto Studio",
+    url: "https://pro-photo-studio-sepia.vercel.app/",
+    description: "AI-powered photo editor for image enhancement, background removal, portrait retouching, color correction, and creative visual effects.",
+    category: "Creative & Media Tools",
+    tags: ["AI Imaging", "Canvas Filters", "Color Grading", "WebGL"],
+    complexity: "Advanced",
+    lastUpdated: "Sep 2026"
+  },
+  {
+    name: "Link Sense AI",
+    url: "https://link-sense-ai.vercel.app/",
+    description: "Smart link analysis tool providing automated summaries, key takeaways, and structured insights from web content.",
+    category: "AI & Agents",
+    tags: ["AI", "Web Scraping", "Content Summarization"],
+    complexity: "Intermediate",
+    lastUpdated: "Sep 2026"
+  },
+  {
+    name: "Mentor AI",
+    url: "https://mentor-ai-murex.vercel.app/",
+    description: "Interactive AI guidance assistant designed to deliver personalized suggestions, study support, and career problem-solving.",
+    category: "AI & Agents",
+    tags: ["AI Assistant", "Education", "Conversational AI"],
+    complexity: "Intermediate",
+    lastUpdated: "Aug 2026"
+  },
+  {
+    name: "Viral Forge",
+    url: "https://viral-forge-five.vercel.app/",
+    description: "Content idea generator for creators, marketers, and social media managers looking to spark viral hooks and engaging campaign concepts.",
+    category: "Social & Content Tools",
+    tags: ["AI Ideation", "Social Media", "Copywriting"],
+    complexity: "Intermediate",
+    lastUpdated: "Aug 2026"
+  },
+  {
+    name: "Mail Craft",
+    url: "https://mail-craft-two.vercel.app/",
+    description: "AI email writing assistant that generates professional, well-structured emails, replies, and follow-ups in seconds.",
+    category: "Productivity & Writing",
+    tags: ["AI Writing", "Email Automation", "Tone Adjustment"],
+    complexity: "Intermediate",
+    lastUpdated: "Jul 2026"
+  },
+  {
+    name: "Note Snap",
+    url: "https://note-snap-three.vercel.app/",
+    description: "Smart, distraction-free note-taking tool for capturing, structuring, and organizing rapid thoughts and daily plans.",
+    category: "Productivity & Writing",
+    tags: ["Productivity", "Markdown", "Local Storage"],
+    complexity: "Intermediate",
+    lastUpdated: "Jul 2026"
+  },
+  {
+    name: "Te-X Forge",
+    url: "https://te-x-forge-two.vercel.app/",
+    description: "A clean and focused environment for writing, testing, and rendering complex LaTeX equations and mathematical typography.",
+    category: "Developer Tools",
+    tags: ["LaTeX", "KaTeX", "Math Engine", "Developer Tool"],
+    complexity: "Intermediate",
+    lastUpdated: "Aug 2026"
+  },
+  {
+    name: "Ink Whisper",
+    url: "https://ink-whisper.vercel.app/",
+    description: "AI-powered creative writing companion that helps draft letters, imaginative stories, blog posts, and long-form articles.",
+    category: "Productivity & Writing",
+    tags: ["Generative AI", "Storytelling", "Creative Writing"],
+    complexity: "Intermediate",
+    lastUpdated: "Jul 2026"
+  },
+  {
+    name: "Neuro Draw",
+    url: "https://neuro-draw.vercel.app/",
+    description: "An AI-powered drawing studio for creating expressive digital sketches, freeform canvas illustrations, and creative artwork.",
+    category: "Creative & Media Tools",
+    tags: ["HTML5 Canvas", "AI Art", "Creative Tool"],
+    complexity: "Advanced",
+    lastUpdated: "Aug 2026"
+  },
+  {
+    name: "ZoZo",
+    url: "https://zozo-two-theta.vercel.app/",
+    description: "An intelligent digital assistant designed to simplify everyday tasks, answer queries, and boost digital workflow efficiency.",
+    category: "AI & Agents",
+    tags: ["AI Assistant", "Task Automation", "Conversational AI"],
+    complexity: "Intermediate",
+    lastUpdated: "Jun 2026"
+  },
+  {
+    name: "Career Advisor",
+    url: "https://career-advisor-eight.vercel.app/",
+    description: "Interactive AI platform that evaluates goals and interests to provide personalized career trajectories, learning paths, and skills advice.",
+    category: "AI & Agents",
+    tags: ["AI Consultation", "Career Guidance", "Interactive"],
+    complexity: "Intermediate",
+    lastUpdated: "Jun 2026"
+  },
+  {
+    name: "Vorathi",
+    url: "https://vorathi.vercel.app/",
+    description: "An original constructed language and phonetic communication system designed and developed by Sowjith Anumola.",
+    category: "Other Projects",
+    tags: ["Constructed Language", "Linguistics", "Creative System"],
+    complexity: "Experimental",
+    lastUpdated: "May 2026"
+  },
+  {
+    name: "Giddu",
+    url: "https://giddu-phi.vercel.app/",
+    description: "AI-powered digital helper that automates repetitive web chores, provides smart answers, and offers on-demand workflow support.",
+    category: "AI & Agents",
+    tags: ["AI Agent", "Workflow Automation", "Smart Helper"],
+    complexity: "Intermediate",
+    lastUpdated: "Jun 2026"
+  },
+  {
+    name: "Nova Mind",
+    url: "https://nova-mind-azure.vercel.app/",
+    description: "A futuristic AI companion built for high-level idea exploration, philosophical conversation, and creative problem solving.",
+    category: "AI & Agents",
+    tags: ["AI Companion", "Creative Thinking", "NLP"],
+    complexity: "Advanced",
+    lastUpdated: "Jul 2026"
+  },
+  {
+    name: "Score Arena",
+    url: "https://scorearena-mu.vercel.app/",
+    description: "Live sports hub offering real-time scores, league standings, match breakdowns, and statistical sport analytics.",
+    category: "Social & Content Tools",
+    tags: ["Live Data", "Sports Tracker", "Real-time Stats"],
+    complexity: "Intermediate",
+    lastUpdated: "Jul 2026"
+  },
+  {
+    name: "Multiplayer Racing",
+    url: "https://multiplayer-racing.vercel.app/",
+    description: "Real-time multiplayer 2D racing game where players challenge friends across dynamic tracks with competitive physics.",
+    category: "Other Projects",
+    tags: ["Game Engine", "Multiplayer", "Canvas Physics"],
+    complexity: "Advanced",
+    lastUpdated: "Aug 2026"
+  },
+  {
+    name: "TicMaster",
+    url: "https://tictactoe-sandy-two-22.vercel.app/",
+    description: "Classic Tic Tac Toe reimagined with two-player mode and an unbeatable AI opponent powered by the Minimax algorithm.",
+    category: "Other Projects",
+    tags: ["Minimax Algorithm", "Game AI", "Classic Game"],
+    complexity: "Intermediate",
+    lastUpdated: "Apr 2026"
+  },
+  {
+    name: "Chess Game",
+    url: "https://chess-game-tau-brown.vercel.app/",
+    description: "Classic offline chess game built for two players on the same device with standard rules, smooth moves, and legal move validation.",
+    category: "Other Projects",
+    tags: ["Chess Rules Engine", "Board Game", "Two-Player"],
+    complexity: "Intermediate",
+    lastUpdated: "May 2026"
+  },
+  {
+    name: "Luminance",
+    url: "https://luminance-navy.vercel.app/",
+    description: "Interactive web graphics experiment demonstrating ambient light physics, particle diffusion, and dynamic lighting shaders.",
+    category: "Creative & Media Tools",
+    tags: ["Shader FX", "Lighting Physics", "Creative Coding"],
+    complexity: "Advanced",
+    lastUpdated: "Sep 2026"
+  },
+  {
+    name: "XRay Vision",
+    url: "https://xray2-five.vercel.app/",
+    description: "An experimental visual filter tool simulating biological scanner overlays and futuristic optical effects.",
+    category: "Creative & Media Tools",
+    tags: ["Visual Filters", "Camera FX", "Experimental"],
+    complexity: "Experimental",
+    lastUpdated: "May 2026"
+  },
+  {
+    name: "XRay Hand",
+    url: "https://xrayhand-rel4jry7.manus.space/",
+    description: "Interactive machine-vision experiment combining real-time hand tracking with futuristic skeletal overlay effects.",
+    category: "Creative & Media Tools",
+    tags: ["Computer Vision", "Hand Tracking", "Futuristic UI"],
+    complexity: "Advanced",
+    lastUpdated: "Sep 2026"
   },
   {
     name: "Fonts Emoji Studio",
     url: "https://fonts-emoji-studio.vercel.app/",
-    description: "Creative text styling and emoji tool for customizing fonts and making expressive text."
+    description: "Creative typographic styling tool for generating custom Unicode fonts, ASCII art, and expressive text decorators.",
+    category: "Creative & Media Tools",
+    tags: ["Typography", "Unicode Engine", "Emoji FX"],
+    complexity: "Intermediate",
+    lastUpdated: "Jun 2026"
   },
   {
     name: "QR Code Color Generator",
     url: "https://qr-code-color-generator.vercel.app/",
-    description: "Custom QR code generator for creating colorful QR codes with personalized designs."
+    description: "Custom SVG QR code generator with personalized gradient palettes, embeddable styles, and instant high-res downloads.",
+    category: "Developer Tools",
+    tags: ["QR Code Engine", "SVG Generator", "Color Palettes"],
+    complexity: "Intermediate",
+    lastUpdated: "Aug 2026"
+  }
+];
+
+export const SKILLS_DATA = [
+  {
+    category: "Frontend Development",
+    accent: "lime",
+    technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "HTML5 Canvas", "Vite", "Motion/Animation"]
   },
   {
-    name: "WebOS",
-    url: "https://webos-green.vercel.app/",
-    description: "A browser-based operating system featuring a desktop interface, file management, coding tools, document editing, and productivity features."
+    category: "Backend & Systems",
+    accent: "cyan",
+    technologies: ["Node.js", "REST APIs", "Serverless Functions", "State Management", "LocalStorage / Web Storage"]
+  },
+  {
+    category: "AI & Integrations",
+    accent: "purple",
+    technologies: ["LLM Prompt Engineering", "AI Chat & Assistant Logic", "NLP Emotion Analysis", "Computer Vision Overlays"]
+  },
+  {
+    category: "Creative Tools & Deployment",
+    accent: "pink",
+    technologies: ["Web Audio API", "Vercel Deployment", "Git & GitHub", "Responsive Design", "WCAG Accessibility"]
   }
 ];
