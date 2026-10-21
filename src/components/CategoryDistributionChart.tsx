@@ -9,7 +9,8 @@ import {
   Cell
 } from "recharts";
 import { Project, Category, CATEGORIES } from "../constants";
-import { BarChart3, Sparkles, Filter, Code2, Layers } from "lucide-react";
+import { BarChart3 } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 interface CategoryDistributionChartProps {
   projects: Project[];
@@ -64,6 +65,8 @@ export default function CategoryDistributionChart({
   selectedCategory,
   onSelectCategory
 }: CategoryDistributionChartProps) {
+  const { isDark } = useTheme();
+
   // Aggregate category counts
   const data: CategoryDataPoint[] = useMemo(() => {
     const rawCategories = CATEGORIES.filter((c) => c !== "All Projects") as Category[];
@@ -93,46 +96,94 @@ export default function CategoryDistributionChart({
   }, [data]);
 
   return (
-    <div className="w-full rounded-3xl border border-white/10 bg-[#0c061a]/80 backdrop-blur-xl p-5 sm:p-7 shadow-2xl relative overflow-hidden mb-12">
+    <div
+      className={`w-full rounded-3xl border backdrop-blur-xl p-5 sm:p-7 shadow-2xl relative overflow-hidden mb-12 transition-colors duration-300 ${
+        isDark
+          ? "border-white/10 bg-[#0c061a]/80"
+          : "border-zinc-200/90 bg-white/95 shadow-md"
+      }`}
+    >
       {/* Ambient background glows */}
       <div
-        className="pointer-events-none absolute -top-12 -right-12 w-64 h-64 bg-cyan-500/10 blur-[90px] rounded-full"
+        className={`pointer-events-none absolute -top-12 -right-12 w-64 h-64 blur-[90px] rounded-full ${
+          isDark ? "bg-cyan-500/10" : "bg-cyan-500/5"
+        }`}
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -bottom-12 -left-12 w-64 h-64 bg-purple-500/10 blur-[90px] rounded-full"
+        className={`pointer-events-none absolute -bottom-12 -left-12 w-64 h-64 blur-[90px] rounded-full ${
+          isDark ? "bg-purple-500/10" : "bg-purple-500/5"
+        }`}
         aria-hidden="true"
       />
 
       {/* Header and Summary stats */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/10 relative z-10">
+      <div
+        className={`flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b relative z-10 ${
+          isDark ? "border-white/10" : "border-zinc-200/80"
+        }`}
+      >
         <div>
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-lime-400 uppercase mb-1.5">
+          <div
+            className={`inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-wider uppercase mb-1.5 ${
+              isDark ? "text-lime-400" : "text-lime-700 font-bold"
+            }`}
+          >
             <BarChart3 size={15} aria-hidden="true" />
             <span>Technical Breadth & Distribution</span>
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+          <h3
+            className={`text-xl sm:text-2xl font-bold tracking-tight flex items-center gap-2 ${
+              isDark ? "text-white" : "text-zinc-900"
+            }`}
+          >
             Project Architecture Across Domains
           </h3>
-          <p className="text-xs sm:text-sm text-zinc-400 mt-1 max-w-xl">
+          <p
+            className={`text-xs sm:text-sm mt-1 max-w-xl ${
+              isDark ? "text-zinc-400" : "text-zinc-600"
+            }`}
+          >
             Breakdown of {projects.length} shipped solo projects across AI, systems, creative tooling, and productivity. Click any bar to instantly filter the gallery.
           </p>
         </div>
 
         {/* Quick summary badges */}
         <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs font-mono">
-          <div className="px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-zinc-300">
-            <span className="text-zinc-500 mr-1.5">Total:</span>
-            <span className="font-bold text-white">{projects.length} Shipped</span>
+          <div
+            className={`px-3 py-1.5 rounded-xl border ${
+              isDark
+                ? "bg-white/[0.04] border-white/10 text-zinc-300"
+                : "bg-zinc-100 border-zinc-200 text-zinc-800"
+            }`}
+          >
+            <span className={isDark ? "text-zinc-500 mr-1.5" : "text-zinc-500 mr-1.5"}>Total:</span>
+            <span className={`font-bold ${isDark ? "text-white" : "text-zinc-950"}`}>
+              {projects.length} Shipped
+            </span>
           </div>
-          <div className="px-3 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-zinc-300">
-            <span className="text-zinc-500 mr-1.5">Domains:</span>
-            <span className="font-bold text-cyan-300">{data.length} Categories</span>
+          <div
+            className={`px-3 py-1.5 rounded-xl border ${
+              isDark
+                ? "bg-white/[0.04] border-white/10 text-zinc-300"
+                : "bg-zinc-100 border-zinc-200 text-zinc-800"
+            }`}
+          >
+            <span className={isDark ? "text-zinc-500 mr-1.5" : "text-zinc-500 mr-1.5"}>Domains:</span>
+            <span className={`font-bold ${isDark ? "text-cyan-300" : "text-cyan-700"}`}>
+              {data.length} Categories
+            </span>
           </div>
           {maxCategory && (
-            <div className="px-3 py-1.5 rounded-xl bg-lime-950/60 border border-lime-500/30 text-lime-300">
-              <span className="text-lime-500/80 mr-1.5">Top Domain:</span>
-              <span className="font-bold text-lime-200">{maxCategory.shortName} ({maxCategory.count})</span>
+            <div
+              className={`px-3 py-1.5 rounded-xl border ${
+                isDark
+                  ? "bg-lime-950/60 border-lime-500/30 text-lime-300"
+                  : "bg-lime-100 border-lime-300 text-lime-900"
+              }`}
+            >
+              <span className={isDark ? "text-lime-500/80 mr-1.5" : "text-lime-700 mr-1.5"}>Top Domain:</span>
+              <span className="font-bold">{maxCategory.shortName} ({maxCategory.count})</span>
             </div>
           )}
         </div>
@@ -154,30 +205,40 @@ export default function CategoryDistributionChart({
             >
               <XAxis
                 dataKey="shortName"
-                stroke="#71717a"
-                tick={{ fill: "#a1a1aa", fontSize: 11, fontFamily: "monospace" }}
+                stroke={isDark ? "#71717a" : "#94a3b8"}
+                tick={{ fill: isDark ? "#a1a1aa" : "#475569", fontSize: 11, fontFamily: "monospace" }}
                 interval={0}
                 tickLine={false}
-                axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+                axisLine={{ stroke: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)" }}
                 dy={8}
               />
               <YAxis
                 allowDecimals={false}
-                stroke="#71717a"
-                tick={{ fill: "#71717a", fontSize: 11, fontFamily: "monospace" }}
+                stroke={isDark ? "#71717a" : "#94a3b8"}
+                tick={{ fill: isDark ? "#71717a" : "#64748b", fontSize: 11, fontFamily: "monospace" }}
                 tickLine={false}
-                axisLine={{ stroke: "rgba(255,255,255,0.1)" }}
+                axisLine={{ stroke: isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)" }}
               />
               <Tooltip
-                cursor={{ fill: "rgba(255, 255, 255, 0.05)", radius: 8 }}
+                cursor={{ fill: isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(0, 0, 0, 0.04)", radius: 8 }}
                 content={({ active, payload }) => {
                   if (active && payload && payload.length) {
                     const item = payload[0].payload as CategoryDataPoint;
                     const isSelected = selectedCategory === item.name;
                     return (
-                      <div className="bg-[#0b0517]/95 border border-white/20 backdrop-blur-xl p-3.5 rounded-2xl shadow-2xl font-mono text-xs max-w-xs pointer-events-none">
-                        <div className="flex items-center justify-between gap-3 mb-1.5 pb-1.5 border-b border-white/10">
-                          <span className="font-bold text-white text-sm">
+                      <div
+                        className={`border backdrop-blur-xl p-3.5 rounded-2xl shadow-2xl font-mono text-xs max-w-xs pointer-events-none ${
+                          isDark
+                            ? "bg-[#0b0517]/95 border-white/20 text-white"
+                            : "bg-white/95 border-zinc-200 text-zinc-900 shadow-xl"
+                        }`}
+                      >
+                        <div
+                          className={`flex items-center justify-between gap-3 mb-1.5 pb-1.5 border-b ${
+                            isDark ? "border-white/10" : "border-zinc-200"
+                          }`}
+                        >
+                          <span className={`font-bold text-sm ${isDark ? "text-white" : "text-zinc-950"}`}>
                             {item.name}
                           </span>
                           <span
@@ -185,15 +246,23 @@ export default function CategoryDistributionChart({
                             style={{ backgroundColor: item.color }}
                           />
                         </div>
-                        <div className="flex items-center justify-between gap-4 text-zinc-300">
+                        <div
+                          className={`flex items-center justify-between gap-4 ${
+                            isDark ? "text-zinc-300" : "text-zinc-700"
+                          }`}
+                        >
                           <span>Projects:</span>
-                          <span className="font-bold text-white">
+                          <span className={`font-bold ${isDark ? "text-white" : "text-zinc-950"}`}>
                             {item.count} ({item.percentage}%)
                           </span>
                         </div>
-                        <div className="text-[10px] text-zinc-400 mt-2 pt-1.5 border-t border-white/5 flex items-center justify-between">
+                        <div
+                          className={`text-[10px] mt-2 pt-1.5 border-t flex items-center justify-between ${
+                            isDark ? "border-white/5 text-zinc-400" : "border-zinc-100 text-zinc-500"
+                          }`}
+                        >
                           <span>{isSelected ? "Currently Active Filter" : "Click bar to view all"}</span>
-                          <span className="text-lime-400 font-semibold">Filter →</span>
+                          <span className="text-lime-500 font-semibold">Filter →</span>
                         </div>
                       </div>
                     );
@@ -216,7 +285,7 @@ export default function CategoryDistributionChart({
                       key={`cell-${entry.name}`}
                       fill={entry.color}
                       fillOpacity={opacity}
-                      stroke={isSelected ? "#ffffff" : entry.color}
+                      stroke={isSelected ? (isDark ? "#ffffff" : "#0f172a") : entry.color}
                       strokeWidth={isSelected ? 2 : 0}
                       style={{
                         filter: isSelected
@@ -232,7 +301,11 @@ export default function CategoryDistributionChart({
         </div>
 
         {/* Legend / Interactive Filter Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2 pt-2 border-t border-white/5 text-[11px] font-mono">
+        <div
+          className={`flex flex-wrap items-center justify-center gap-2 pt-2 border-t text-[11px] font-mono ${
+            isDark ? "border-white/5" : "border-zinc-200/80"
+          }`}
+        >
           <span className="text-zinc-500 text-[10px] uppercase tracking-wider mr-1">Quick Select:</span>
           {data.map((cat) => {
             const isSelected = selectedCategory === cat.name;
@@ -242,8 +315,12 @@ export default function CategoryDistributionChart({
                 onClick={() => onSelectCategory(cat.name)}
                 className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border transition-all ${
                   isSelected
-                    ? "bg-white/15 text-white border-white/30 shadow-sm"
-                    : "bg-white/[0.02] text-zinc-400 border-white/5 hover:border-white/15 hover:text-zinc-200"
+                    ? isDark
+                      ? "bg-white/15 text-white border-white/30 shadow-sm"
+                      : "bg-zinc-900 text-white border-zinc-900 shadow-sm"
+                    : isDark
+                      ? "bg-white/[0.02] text-zinc-400 border-white/5 hover:border-white/15 hover:text-zinc-200"
+                      : "bg-zinc-100 text-zinc-600 border-zinc-200 hover:border-zinc-300 hover:text-zinc-900"
                 }`}
               >
                 <span
@@ -251,14 +328,18 @@ export default function CategoryDistributionChart({
                   style={{ backgroundColor: cat.color }}
                 />
                 <span>{cat.shortName}</span>
-                <span className="text-zinc-500 font-bold">({cat.count})</span>
+                <span className={isDark ? "text-zinc-500 font-bold" : "text-zinc-500 font-bold"}>
+                  ({cat.count})
+                </span>
               </button>
             );
           })}
           {selectedCategory !== "All Projects" && (
             <button
               onClick={() => onSelectCategory("All Projects")}
-              className="text-lime-400 hover:text-lime-300 underline underline-offset-2 ml-1"
+              className={`font-semibold underline underline-offset-2 ml-1 ${
+                isDark ? "text-lime-400 hover:text-lime-300" : "text-lime-700 hover:text-lime-800"
+              }`}
             >
               Reset to All
             </button>

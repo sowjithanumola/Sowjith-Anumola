@@ -31,6 +31,16 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const PROJECTS: Project[] = [
   {
+    name: "EmoLens",
+    url: "https://emo-lens.vercel.app/",
+    description: "AI-powered facial expression analysis and real-time emotion recognition tool providing instant emotional insights, mood telemetry, and audible feedback.",
+    category: "AI & Agents",
+    tags: ["AI Vision", "Emotion AI", "Facial Analysis", "Webcam Stream"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Oct 2026"
+  },
+  {
     name: "WebOS",
     url: "https://webos-green.vercel.app/",
     description: "A browser-based operating system featuring a desktop interface, window management, file exploration, code editing, and productivity apps.",

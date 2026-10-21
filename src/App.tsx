@@ -438,7 +438,7 @@ export default function App() {
                     </span>
                   </div>
                   <p className="text-zinc-500 text-[11px] font-mono leading-tight">
-                    // Explore 27 live projects below categorized with interactive distribution analytics.
+                    // Explore {PROJECTS.length} live projects below categorized with interactive distribution analytics.
                   </p>
                 </div>
               </div>
