@@ -25,6 +25,8 @@ export default function InteractiveMascot() {
   const [floatingEmojis, setFloatingEmojis] = useState<FloatingEmoji[]>([]);
   const [isMinimized, setIsMinimized] = useState(false);
   const [currentSection, setCurrentSection] = useState<string>("hero");
+  const currentSectionRef = useRef<string>("hero");
+  const sectionChangeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [dragAngle, setDragAngle] = useState(0);
 
   const dragX = useMotionValue(0);
@@ -100,7 +102,8 @@ export default function InteractiveMascot() {
     };
   }, [isDragging]);
 
-  // Section observer to react dynamically to portfolio navigation
+  // Section observer: debounce scroll changes and select ONE active section.
+  // This prevents overlapping sections from replacing each other's speech rapidly.
   useEffect(() => {
     const sectionMessages: Record<string, { quote: string; expression: MascotExpression; emoji: string }> = {
       hero: {
@@ -131,34 +134,83 @@ export default function InteractiveMascot() {
     };
 
     const sectionIds = ["hero", "projects", "skills", "about", "contact"];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    if (sections.length === 0) return;
+
+    const chooseActiveSection = () => {
+      sectionChangeTimerRef.current = null;
+
+      // Prefer the section crossing a stable focus line rather than reacting to
+      // every intersecting entry in the same observer callback.
+      const focusY = window.innerHeight * 0.42;
+      const candidates = sections
+        .map((el) => {
+          const rect = el.getBoundingClientRect();
+          const visibleHeight = Math.max(
+            0,
+            Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
+          );
+          const containsFocus = rect.top <= focusY && rect.bottom >= focusY;
+          const centerDistance = Math.abs((rect.top + rect.bottom) / 2 - focusY);
+          return { id: el.id, visibleHeight, containsFocus, centerDistance };
+        })
+        .filter((item) => item.visibleHeight > 0);
+
+      if (candidates.length === 0) return;
+
+      candidates.sort((a, b) => {
+        if (a.containsFocus !== b.containsFocus) return a.containsFocus ? -1 : 1;
+        if (a.containsFocus && b.containsFocus) return a.centerDistance - b.centerDistance;
+        return b.visibleHeight - a.visibleHeight || a.centerDistance - b.centerDistance;
+      });
+
+      const id = candidates[0].id;
+      if (!sectionMessages[id] || id === currentSectionRef.current) return;
+
+      currentSectionRef.current = id;
+      setCurrentSection(id);
+
+      const config = sectionMessages[id];
+      setExpression(config.expression);
+      showSpeech(config.quote, 5000);
+      spawnEmojiBurst(2, config.emoji);
+    };
+
+    const scheduleSectionCheck = () => {
+      if (sectionChangeTimerRef.current) clearTimeout(sectionChangeTimerRef.current);
+      // Wait for scroll/observer activity to settle before choosing a section.
+      sectionChangeTimerRef.current = setTimeout(chooseActiveSection, 220);
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.35) {
-            const id = entry.target.id;
-            if (id && sectionMessages[id] && id !== currentSection) {
-              setCurrentSection(id);
-              const config = sectionMessages[id];
-              setExpression(config.expression);
-              showSpeech(config.quote, 4500);
-              spawnEmojiBurst(2, config.emoji);
-            }
-          }
-        });
+        if (entries.some((entry) => entry.isIntersecting)) {
+          scheduleSectionCheck();
+        }
       },
       {
-        threshold: [0.35, 0.6],
+        threshold: [0.15, 0.35, 0.6],
         rootMargin: "-10% 0px -20% 0px"
       }
     );
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
+    sections.forEach((section) => observer.observe(section));
+    window.addEventListener("scroll", scheduleSectionCheck, { passive: true });
+    window.addEventListener("resize", scheduleSectionCheck);
 
-    return () => observer.disconnect();
-  }, [currentSection, showSpeech, spawnEmojiBurst]);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", scheduleSectionCheck);
+      window.removeEventListener("resize", scheduleSectionCheck);
+      if (sectionChangeTimerRef.current) {
+        clearTimeout(sectionChangeTimerRef.current);
+        sectionChangeTimerRef.current = null;
+      }
+    };
+  }, [showSpeech, spawnEmojiBurst]);
 
   // Click interaction: change expression, witty quip, and sparkle burst
   const handleClick = () => {
