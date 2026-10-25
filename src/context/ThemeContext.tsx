@@ -11,7 +11,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const THEME_STORAGE_KEY = "sowjith_portfolio_theme";
+const THEME_STORAGE_KEY = "sowjith_portfolio_theme_v2";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
@@ -20,10 +20,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       const stored = localStorage.getItem(THEME_STORAGE_KEY);
       if (stored === "light" || stored === "dark") {
         return stored;
-      }
-      // Check system preference
-      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
-        return "light";
       }
     } catch {
       // Ignore localStorage read errors
@@ -57,24 +53,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.style.colorScheme = "light";
     }
   }, [theme]);
-
-  // Listen to OS theme changes if user hasn't explicitly set preference
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return;
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: light)");
-    const handleChange = (e: MediaQueryListEvent) => {
-      try {
-        const stored = localStorage.getItem(THEME_STORAGE_KEY);
-        if (!stored) {
-          setTheme(e.matches ? "light" : "dark");
-        }
-      } catch {
-        // ignore
-      }
-    };
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme, isDark: theme === "dark" }}>

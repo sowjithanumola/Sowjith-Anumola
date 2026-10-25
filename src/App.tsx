@@ -36,6 +36,7 @@ import ProjectCard from "./components/ProjectCard";
 import AudioPlayer from "./components/AudioPlayer";
 import CategoryDistributionChart from "./components/CategoryDistributionChart";
 import InteractiveMascot from "./components/InteractiveMascot";
+import LampThemeToggle from "./components/LampThemeToggle";
 
 export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("All Projects");
@@ -180,6 +181,8 @@ export default function App() {
 
           {/* Zone 3: Primary Action & Mobile Menu Toggle */}
           <div className="flex items-center gap-2.5 shrink-0">
+            <LampThemeToggle />
+
             <a
               href="#contact"
               className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider text-black bg-lime-400 hover:bg-lime-300 rounded-xl transition-all shadow-[0_0_20px_rgba(163,230,53,0.3)] hover:shadow-[0_0_25px_rgba(163,230,53,0.5)] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
@@ -243,11 +246,12 @@ export default function App() {
               >
                 Contact & Links
               </a>
-              <div className="pt-2">
+              <div className="pt-2 flex items-center justify-between gap-3">
+                <LampThemeToggle showLabel={true} />
                 <a
                   href="#contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2.5 text-xs font-mono font-bold uppercase tracking-wider text-black bg-lime-400 rounded-xl block"
+                  className="flex-1 text-center py-2.5 text-xs font-mono font-bold uppercase tracking-wider text-black bg-lime-400 rounded-xl block"
                 >
                   Get in Touch
                 </a>

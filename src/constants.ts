@@ -31,6 +31,46 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const PROJECTS: Project[] = [
   {
+    name: "TabVault",
+    url: "https://tabvault-nu.vercel.app/",
+    description: "Fast, offline-first personal bookmark manager to organize, tag, and search your web bookmarks into custom collections with local storage.",
+    category: "Productivity & Writing",
+    tags: ["Bookmark Manager", "Offline-First", "Collection Organizer", "Search & Tagging"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Oct 2026"
+  },
+  {
+    name: "Afterglow",
+    url: "https://after-glow-ten.vercel.app/",
+    description: "Private, distraction-free visual journal for capturing daily memories, mood reflection, photo keepsakes, and personal memory timelines.",
+    category: "Productivity & Writing",
+    tags: ["Visual Journal", "Mood Reflection", "Memory Keepsake", "Mindfulness"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Oct 2026"
+  },
+  {
+    name: "SnapColor",
+    url: "https://snapcolours.vercel.app/",
+    description: "Generate harmonious 5-color palettes with complementary, analogous, triadic, and monochromatic rules, featuring WCAG AA contrast analysis and gradient exports.",
+    category: "Creative & Media Tools",
+    tags: ["Palette Generator", "WCAG Contrast", "Color Harmonies", "Design Tool"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Oct 2026"
+  },
+  {
+    name: "IconMint",
+    url: "https://icon-mint.vercel.app/",
+    description: "Browser-based favicon creator and icon design studio with live multi-size previews, preset gallery, SVG customization, and instant web package exports.",
+    category: "Developer Tools",
+    tags: ["Favicon Generator", "Icon Studio", "SVG Vector", "Web Asset Exporter"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Oct 2026"
+  },
+  {
     name: "EmoLens",
     url: "https://emo-lens.vercel.app/",
     description: "AI-powered facial expression analysis and real-time emotion recognition tool providing instant emotional insights, mood telemetry, and audible feedback.",

@@ -42,17 +42,17 @@ const SECTION_CONFIGS: Record<string, { quote: string; expression: MascotExpress
   },
   featured: {
     title: "Flagship",
-    quote: "These are flagship creations: EmoLens AI, WebOS, ECHOROOM & OpenCut! 🌟",
+    quote: "These are flagship creations: TabVault, Afterglow, SnapColor, IconMint & WebOS! 🌟",
     expression: "cool",
     emoji: "⭐",
-    guideDesc: "Top software: AI vision analyst, browser OS, Web DAW & video editor."
+    guideDesc: "Top software: Bookmark vault, visual journal, palette engine, icon studio & browser OS."
   },
   projects: {
     title: "Projects",
-    quote: "Psst... check out these cool projects! 28+ shipped live! 🛠️",
+    quote: "Psst... check out these cool projects! 32+ shipped live! 🛠️",
     expression: "stars",
     emoji: "✨",
-    guideDesc: "28 live shipped apps with category distribution analytics."
+    guideDesc: "32 live shipped apps with category distribution analytics."
   },
   about: {
     title: "About",
@@ -429,7 +429,7 @@ export default function InteractiveMascot() {
       "Psst... Did you try dragging me across the screen? 🛸",
       "Born March 12, 2013 — building tomorrow's tech today! 🎂",
       "Check out the interactive Category Chart above! 📊",
-      "Did you know? 28 live apps are shipped right here! ✨",
+      "Did you know? 32 live apps are shipped right here! ✨",
       "*happy robot antenna dances with neon sparks* 🤖",
       "SoloBot online and ready to guide you anytime! ⭐"
     ];
