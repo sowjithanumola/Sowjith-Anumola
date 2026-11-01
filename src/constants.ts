@@ -31,6 +31,16 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const PROJECTS: Project[] = [
   {
+    name: "CircuitForge",
+    url: "https://circuitforge-zeta.vercel.app/",
+    description: "Professional browser-based electronics design studio with realistic virtual breadboard, schematic diagram editor, and real-time circuit simulation.",
+    category: "Developer Tools",
+    tags: ["Electronics Studio", "Virtual Breadboard", "Schematic Editor", "Circuit Simulation"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Nov 2026"
+  },
+  {
     name: "TabVault",
     url: "https://tabvault-nu.vercel.app/",
     description: "Fast, offline-first personal bookmark manager to organize, tag, and search your web bookmarks into custom collections with local storage.",
