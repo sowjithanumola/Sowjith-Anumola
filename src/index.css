@@ -25,26 +25,24 @@
 /* Midnight Purple Funky Canvas (Dark Mode) */
 .funky-canvas {
   background-color: #07020e;
+  position: relative;
+}
+
+.funky-canvas-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-color: #07020e;
   background-image: 
     radial-gradient(at 0% 0%, rgba(126, 34, 206, 0.18) 0px, transparent 45%),
     radial-gradient(at 80% 10%, rgba(244, 63, 94, 0.12) 0px, transparent 40%),
     radial-gradient(at 20% 50%, rgba(34, 211, 238, 0.08) 0px, transparent 40%),
     radial-gradient(at 90% 75%, rgba(163, 230, 53, 0.07) 0px, transparent 35%),
     radial-gradient(at 50% 100%, rgba(147, 51, 234, 0.15) 0px, transparent 50%);
-  background-attachment: fixed;
-  transition: background-color 0.3s ease, background-image 0.3s ease;
-}
-
-/* Illuminated Paper Canvas (Light Mode - Warm, Creative, Accessible) */
-html[data-theme="light"] .funky-canvas,
-.light .funky-canvas {
-  background-color: #f8fafc;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
-    radial-gradient(at 85% 10%, rgba(251, 191, 36, 0.14) 0px, transparent 45%),
-    radial-gradient(at 20% 50%, rgba(14, 165, 233, 0.08) 0px, transparent 45%),
-    radial-gradient(at 90% 75%, rgba(132, 204, 22, 0.1) 0px, transparent 40%),
-    radial-gradient(at 50% 100%, rgba(244, 63, 94, 0.07) 0px, transparent 50%);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* Subtle Creative Grid Texture */
@@ -53,13 +51,7 @@ html[data-theme="light"] .funky-canvas,
     linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
-}
-
-html[data-theme="light"] .funky-grid,
-.light .funky-grid {
-  background-image: 
-    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  transform: translate3d(0, 0, 0);
 }
 
 /* Playful Grain Texture */
@@ -71,28 +63,38 @@ html[data-theme="light"] .funky-grid,
   opacity: 0.025;
   pointer-events: none;
   z-index: 1;
+  transform: translate3d(0, 0, 0);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Ambient Floating Accents */
+/* Ambient Floating Accents - GPU Accelerated */
 .ambient-blob {
   position: absolute;
   border-radius: 9999px;
-  filter: blur(120px);
+  filter: blur(90px);
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.16;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  contain: strict;
   animation: gentle-drift 24s infinite alternate ease-in-out;
 }
 
-html[data-theme="light"] .ambient-blob,
-.light .ambient-blob {
-  opacity: 0.08;
+/* Smooth Scrolling & Virtual Layering */
+.content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 750px;
+}
+
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 @keyframes gentle-drift {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(30px, -20px) scale(1.08); }
-  100% { transform: translate(-20px, 30px) scale(0.95); }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(24px, -16px, 0) scale(1.06); }
+  100% { transform: translate3d(-16px, 24px, 0) scale(0.96); }
 }
 
 @media (prefers-reduced-motion: reduce) {

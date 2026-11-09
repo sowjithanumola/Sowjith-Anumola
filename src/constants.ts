@@ -31,6 +31,16 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const PROJECTS: Project[] = [
   {
+    name: "FrameFlow",
+    url: "https://frameflow-jade.vercel.app/",
+    description: "Professional browser-based image animation and GIF creation studio with real-time motion controls, timeline editing, and instant export.",
+    category: "Creative & Media Tools",
+    tags: ["Image to GIF", "Animation Studio", "Timeline Editing", "Motion Controls", "GIF Export"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Nov 2026"
+  },
+  {
     name: "CircuitForge",
     url: "https://circuitforge-zeta.vercel.app/",
     description: "Professional browser-based electronics design studio with realistic virtual breadboard, schematic diagram editor, and real-time circuit simulation.",

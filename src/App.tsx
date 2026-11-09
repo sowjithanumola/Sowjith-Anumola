@@ -30,15 +30,18 @@ import {
   ChevronDown,
   UserCheck
 } from "lucide-react";
-const avatarImg = "/sowjith-avatar.jpg";
 import { PROJECTS, CATEGORIES, Category, SKILLS_DATA, Project } from "./constants";
 import ProjectCard from "./components/ProjectCard";
 import AudioPlayer from "./components/AudioPlayer";
 import CategoryDistributionChart from "./components/CategoryDistributionChart";
 import InteractiveMascot from "./components/InteractiveMascot";
-import LampThemeToggle from "./components/LampThemeToggle";
+import MyJourneyTimeline from "./components/MyJourneyTimeline";
+import AppleHelloLoader from "./components/AppleHelloLoader";
+
+const avatarImg = "/sowjith-avatar.jpg";
 
 export default function App() {
+  const [showHelloLoader, setShowHelloLoader] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<Category>("All Projects");
   const [searchQuery, setSearchQuery] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -100,6 +103,14 @@ export default function App() {
 
   return (
     <div className="min-h-screen funky-canvas text-zinc-100 font-sans relative selection:bg-lime-400 selection:text-black">
+      {/* Authentic Apple Device "hello" Waiting Screen */}
+      {showHelloLoader && (
+        <AppleHelloLoader onComplete={() => setShowHelloLoader(false)} />
+      )}
+
+      {/* GPU Accelerated Fixed Background Layer (Zero repaint during scroll) */}
+      <div className="funky-canvas-bg" aria-hidden="true" />
+
       {/* Subtle Grain & Ambient Glow Blobs */}
       <div className="grain-overlay" aria-hidden="true" />
       <div className="fixed inset-0 funky-grid pointer-events-none z-0 opacity-40" aria-hidden="true" />
@@ -166,6 +177,12 @@ export default function App() {
               About
             </a>
             <a
+              href="#journey"
+              className="hover:text-white hover:underline underline-offset-8 transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400 rounded px-1"
+            >
+              My Journey
+            </a>
+            <a
               href="#skills"
               className="hover:text-white hover:underline underline-offset-8 transition-colors whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lime-400 rounded px-1"
             >
@@ -181,8 +198,6 @@ export default function App() {
 
           {/* Zone 3: Primary Action & Mobile Menu Toggle */}
           <div className="flex items-center gap-2.5 shrink-0">
-            <LampThemeToggle />
-
             <a
               href="#contact"
               className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider text-black bg-lime-400 hover:bg-lime-300 rounded-xl transition-all shadow-[0_0_20px_rgba(163,230,53,0.3)] hover:shadow-[0_0_25px_rgba(163,230,53,0.5)] whitespace-nowrap shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
@@ -233,6 +248,14 @@ export default function App() {
                 About Sowjith
               </a>
               <a
+                href="#journey"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-sm font-mono font-medium text-cyan-300 hover:text-cyan-200 py-1.5 flex items-center justify-between"
+              >
+                <span>My Journey</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-cyan-950/60 border border-cyan-500/30 text-cyan-300">Age 9 → KeyFlow</span>
+              </a>
+              <a
                 href="#skills"
                 onClick={() => setMobileMenuOpen(false)}
                 className="text-sm font-mono font-medium text-zinc-300 hover:text-lime-300 py-1.5"
@@ -246,12 +269,11 @@ export default function App() {
               >
                 Contact & Links
               </a>
-              <div className="pt-2 flex items-center justify-between gap-3">
-                <LampThemeToggle showLabel={true} />
+              <div className="pt-2">
                 <a
                   href="#contact"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex-1 text-center py-2.5 text-xs font-mono font-bold uppercase tracking-wider text-black bg-lime-400 rounded-xl block"
+                  className="w-full text-center py-2.5 text-xs font-mono font-bold uppercase tracking-wider text-black bg-lime-400 rounded-xl block"
                 >
                   Get in Touch
                 </a>
@@ -451,7 +473,7 @@ export default function App() {
         </section>
 
         {/* FEATURED FLAGSHIP SPOTLIGHT (WebOS, ECHOROOM, OpenCut, Focus Mate) */}
-        <section id="featured" className="mb-32">
+        <section id="featured" className="mb-32 content-auto gpu-layer">
           <div className="flex flex-col items-center text-center mb-14">
             <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-widest text-lime-400 uppercase mb-3">
               <Sparkles size={14} aria-hidden="true" />
@@ -473,7 +495,7 @@ export default function App() {
         </section>
 
         {/* MAIN ALL PROJECTS SECTION WITH INTERACTIVE FILTERS */}
-        <section id="projects" className="mb-36">
+        <section id="projects" className="mb-36 content-auto gpu-layer">
           <div className="flex flex-col items-center text-center mb-12">
             <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-widest text-cyan-400 uppercase mb-3">
               <Code2 size={14} aria-hidden="true" />
@@ -609,10 +631,10 @@ export default function App() {
 
             <div className="space-y-6 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal">
               <p>
-                Hi, I'm <strong className="text-white font-semibold">Sowjith Anumola</strong>. I was born on <strong className="text-amber-300 font-semibold">March 12, 2013</strong>, and I'm a 13-year-old solo developer from India who started coding at age 10. I am passionate about building modern web applications, AI-powered tools, productivity software, and experimental digital products.
+                Hi, I'm <strong className="text-white font-semibold">Sowjith Anumola</strong>. I was born on <strong className="text-amber-300 font-semibold">March 12, 2013</strong>, and I'm a 13-year-old solo developer from India who started coding at age 9. I am passionate about building modern web applications, AI-powered tools, productivity software, and experimental digital products.
               </p>
               <p>
-                From an early age, I was endlessly curious about how software and interactive systems operate under the hood. Since starting my journey in 2023 at age 10, that curiosity led me to explore frontend architectures, artificial intelligence APIs, audio processing, and creative coding. Over the past three years, I've designed, built, and shipped over {PROJECTS.length} live web applications.
+                From an early age, I was endlessly curious about how software and interactive systems operate under the hood. Since starting my journey at age 9, that curiosity led me to explore frontend architectures, artificial intelligence APIs, audio processing, and creative coding. Over the past four years, I've designed, built, and shipped over {PROJECTS.length} live web applications.
               </p>
               <p>
                 I operate under the philosophy of <strong className="text-lime-300 font-mono font-semibold">"Sowjith, solo coder"</strong>—taking projects from inception, UI design, and TypeScript implementation all the way to cloud deployment on Vercel. Every application teaches me something new and pushes my technical abilities forward.
@@ -635,8 +657,8 @@ export default function App() {
                   <Code2 size={14} aria-hidden="true" />
                   <span>Coding Since</span>
                 </div>
-                <div className="text-base font-bold text-white">Age 10</div>
-                <div className="text-[11px] text-zinc-400 mt-0.5">Started in 2023</div>
+                <div className="text-base font-bold text-white">Age 9</div>
+                <div className="text-[11px] text-zinc-400 mt-0.5">Started at Age 9</div>
               </div>
 
               <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
@@ -660,8 +682,11 @@ export default function App() {
           </div>
         </section>
 
+        {/* MY JOURNEY VERTICAL TIMELINE SECTION */}
+        <MyJourneyTimeline />
+
         {/* SKILLS SECTION (Grouped as requested) */}
-        <section id="skills" className="mb-36">
+        <section id="skills" className="mb-36 content-auto gpu-layer">
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold tracking-widest text-pink-400 uppercase mb-3">
               <Terminal size={14} aria-hidden="true" />

@@ -115,13 +115,13 @@ export default function ProjectCard({ project, idx = 0 }: ProjectCardProps) {
     <motion.article
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.35, delay: Math.min(idx * 0.04, 0.3) }}
-      whileHover={{ y: -6 }}
-      className={`group relative flex flex-col justify-between h-full rounded-2xl border backdrop-blur-md p-6 sm:p-7 transition-all duration-300 focus-within:ring-2 focus-within:ring-lime-400 ${
+      viewport={{ once: true, margin: "-20px" }}
+      transition={{ duration: 0.3, delay: Math.min(idx * 0.03, 0.25) }}
+      whileHover={{ y: -5 }}
+      className={`group relative flex flex-col justify-between h-full rounded-2xl border p-6 sm:p-7 transition-all duration-300 gpu-layer focus-within:ring-2 focus-within:ring-lime-400 ${
         isDark
-          ? `border-white/10 bg-[#0d071b]/80 hover:shadow-xl ${theme.accentBorderDark}`
-          : `border-zinc-200/90 bg-white/95 shadow-md hover:shadow-xl ${theme.accentBorderLight}`
+          ? `border-white/10 bg-[#0d071b]/95 hover:border-white/20 hover:shadow-[0_10px_30px_-15px_rgba(0,0,0,0.8)] ${theme.accentBorderDark}`
+          : `border-zinc-200/90 bg-white shadow-md hover:shadow-xl ${theme.accentBorderLight}`
       }`}
       style={{
         boxShadow: isDark

@@ -42,7 +42,7 @@ const SECTION_CONFIGS: Record<string, { quote: string; expression: MascotExpress
   },
   featured: {
     title: "Flagship",
-    quote: "These are flagship creations: CircuitForge, TabVault, Afterglow, SnapColor & WebOS! 🌟",
+    quote: "These are flagship creations: FrameFlow, CircuitForge, TabVault, Afterglow & WebOS! 🌟",
     expression: "cool",
     emoji: "⭐",
     guideDesc: "Top software: Virtual circuit studio, bookmark vault, visual journal, palette engine & browser OS."
@@ -59,7 +59,14 @@ const SECTION_CONFIGS: Record<string, { quote: string; expression: MascotExpress
     quote: "A little about the human behind this website! Born March 12, 2013 🎂",
     expression: "happy",
     emoji: "⭐",
-    guideDesc: "Solo builder story, coding since age 10, born March 12, 2013."
+    guideDesc: "Solo builder story, coding since age 9, born March 12, 2013."
+  },
+  journey: {
+    title: "Journey",
+    quote: "Started coding at age 9! Every creation has a beginning. 🎧✨",
+    expression: "stars",
+    emoji: "🎵",
+    guideDesc: "Sowjith's personal journey from age 9 to KeyFlow and 33+ apps."
   },
   skills: {
     title: "Skills",
@@ -326,7 +333,7 @@ export default function InteractiveMascot() {
 
   // Section Tracking with IntersectionObserver & Dwell Hysteresis
   useEffect(() => {
-    const sectionIds = ["hero", "featured", "projects", "about", "skills", "contact"];
+    const sectionIds = ["hero", "featured", "projects", "about", "journey", "skills", "contact"];
     const sectionRatios = new Map<string, number>();
     let dwellTimer: NodeJS.Timeout | null = null;
     let candidateSection = "";
