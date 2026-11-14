@@ -42,10 +42,10 @@ const SECTION_CONFIGS: Record<string, { quote: string; expression: MascotExpress
   },
   featured: {
     title: "Flagship",
-    quote: "These are flagship creations: FrameFlow, CircuitForge, TabVault, Afterglow & WebOS! 🌟",
+    quote: "These are flagship creations: PHYSIX LAB, FrameFlow, CircuitForge, TabVault & WebOS! 🌟",
     expression: "cool",
     emoji: "⭐",
-    guideDesc: "Top software: Virtual circuit studio, bookmark vault, visual journal, palette engine & browser OS."
+    guideDesc: "Top software: Physics simulation lab, GIF studio, circuit studio, bookmark vault & browser OS."
   },
   projects: {
     title: "Projects",

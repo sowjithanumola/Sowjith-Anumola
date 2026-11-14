@@ -31,6 +31,16 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const PROJECTS: Project[] = [
   {
+    name: "PHYSIX LAB",
+    url: "https://physix-lab.vercel.app/",
+    description: "Interactive browser-based physics simulation laboratory for gravity, fluid dynamics, electromagnetism, optics, chaos theory, molecular physics, and rigid-body mechanics in 2D and 3D.",
+    category: "Creative & Media Tools",
+    tags: ["Physics Engine", "2D & 3D Simulations", "Fluid Dynamics", "Optics & Gravity", "Interactive Lab"],
+    featured: true,
+    complexity: "Advanced",
+    lastUpdated: "Nov 2026"
+  },
+  {
     name: "FrameFlow",
     url: "https://frameflow-jade.vercel.app/",
     description: "Professional browser-based image animation and GIF creation studio with real-time motion controls, timeline editing, and instant export.",
